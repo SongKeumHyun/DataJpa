@@ -1,8 +1,14 @@
 package com.song.jap;
 
+
+
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Account {
@@ -12,6 +18,15 @@ public class Account {
 	private String username;
 	private String password;
 	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date created = new Date();
+	
+	public Date getCreated() {
+		return created;
+	}
+	public void setCreated(Date created) {
+		this.created = created;
+	}
 	public long getId() {
 		return id;
 	}

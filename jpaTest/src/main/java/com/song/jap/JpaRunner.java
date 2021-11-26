@@ -23,6 +23,7 @@ public class JpaRunner implements ApplicationRunner {
 		account.setUsername("song2");
 		account.setPassword("1234");
 		
+		
 		entityManager.persist(account);
 		
 
