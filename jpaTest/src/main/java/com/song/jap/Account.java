@@ -3,10 +3,14 @@ package com.song.jap;
 
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -17,10 +21,21 @@ public class Account {
 	private long id;
 	private String username;
 	private String password;
-	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date created = new Date();
 	
+	@Embedded
+	private Address  address;
+	
+	@OneToMany
+	private Set<Study> stuodies = new  HashSet<>();
+	
+	public Set<Study> getStuodies() {
+		return stuodies;
+	}
+	public void setStuodies(Set<Study> stuodies) {
+		this.stuodies = stuodies;
+	}
 	public Date getCreated() {
 		return created;
 	}
