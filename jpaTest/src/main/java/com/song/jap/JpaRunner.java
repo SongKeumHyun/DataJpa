@@ -12,6 +12,11 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 
+import org.json.simple.JSONObject; 
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+
 @Component
 @Transactional
 public class JpaRunner implements ApplicationRunner {
@@ -20,10 +25,11 @@ public class JpaRunner implements ApplicationRunner {
 	EntityManager entityManager;
 	
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		
-		
+/*		
 		Post post = new Post();
 		post.setTitle("Sppinrg...");
 		
@@ -40,9 +46,6 @@ public class JpaRunner implements ApplicationRunner {
 		
 		entityManager.persist(post);
 
-		
-		
-		
 		post = entityManager.getReference(Post.class, 1l);
 		
 		System.out.println(post.toString());
@@ -58,16 +61,19 @@ public class JpaRunner implements ApplicationRunner {
 			System.out.println(p.toString());
 		}
 		
+*/		
+
+		JSONObject data = new JSONObject();
 		
-
-
+		data.put("name", "song");
+		data.put("age", "20");
 		
-
-	
-
+		JSONObject rootJSon = new JSONObject();
 		
-
-
+		rootJSon.put("data", data);
+		
+		System.out.println(rootJSon.toJSONString());
+		
 		
 	}
 	
