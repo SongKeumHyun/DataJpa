@@ -20,7 +20,7 @@ public class Account {
 	@Id @GeneratedValue
 	private long id;
 	private String username;
-	private String password;
+	private String password; 
 	
 	
 	@Temporal(TemporalType.TIMESTAMP)
