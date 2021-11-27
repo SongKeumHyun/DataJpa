@@ -12,6 +12,12 @@ import javax.persistence.OneToMany;
 @Entity
 public class Post {
 	
+	@Override
+	public String toString() {
+		return "Post [id=" + id + ", title=" + title + ", comments=" + comments + "]";
+	}
+
+
 	@Id @GeneratedValue
 	private long id;
 

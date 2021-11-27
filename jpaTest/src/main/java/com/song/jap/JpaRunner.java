@@ -19,6 +19,7 @@ public class JpaRunner implements ApplicationRunner {
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		
+		
 		Post post = new Post();
 		post.setTitle("Sppinrg...");
 		
@@ -36,6 +37,16 @@ public class JpaRunner implements ApplicationRunner {
 		entityManager.persist(post);
 
 		
+		
+		
+		post = entityManager.getReference(Post.class, 1l);
+		
+		System.out.println(post.toString());
+		
+		post.getComments().forEach(c -> {
+			System.out.println(c.getComment());
+		}
+		);
 		
 
 	
