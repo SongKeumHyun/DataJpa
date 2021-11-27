@@ -21,13 +21,15 @@ public class Account {
 	private long id;
 	private String username;
 	private String password;
+	
+	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date created = new Date();
 	
 	@Embedded
 	private Address  address;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "owner")//양방향 관계
 	private Set<Study> stuodies = new  HashSet<>();
 	
 	public Set<Study> getStuodies() {

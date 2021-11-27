@@ -12,7 +12,18 @@ public class Study {
 	private long id;
 	
 	private String name;
+	
+	@ManyToOne // 양방향 관계로 Account에서 관계 됨
+	private Account owner;
 
+
+	public Account getOwner() {
+		return owner;
+	}
+
+	public void setOwner(Account owner) {
+		this.owner = owner;
+	}
 
 	public String getName() {
 		return name;
