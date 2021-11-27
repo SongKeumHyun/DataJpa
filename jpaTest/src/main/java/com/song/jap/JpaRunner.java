@@ -1,12 +1,16 @@
 package com.song.jap;
 
+import java.io.Console;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
+
 
 @Component
 @Transactional
@@ -43,10 +47,20 @@ public class JpaRunner implements ApplicationRunner {
 		
 		System.out.println(post.toString());
 		
-		post.getComments().forEach(c -> {
-			System.out.println(c.getComment());
+		
+		
+		TypedQuery<Post> query = entityManager.createQuery("SELECT p From Post as p", Post.class);
+		
+		List<Post> posts = query.getResultList();
+		
+		for(Post p : posts)
+		{
+			System.out.println(p.toString());
 		}
-		);
+		
+		
+
+
 		
 
 	
