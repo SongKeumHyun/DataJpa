@@ -7,10 +7,12 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import com.song.jap.repository.PostRepository;
 
 import org.json.simple.JSONObject; 
 import org.json.simple.parser.JSONParser;
@@ -21,14 +23,17 @@ import org.json.simple.parser.ParseException;
 @Transactional
 public class JpaRunner implements ApplicationRunner {
 
-	@PersistenceContext
-	EntityManager entityManager;
+//	@PersistenceContext
+//	EntityManager entityManager;
+	@Autowired
+	PostRepository postRepository;
 	
 	
 	@SuppressWarnings("unchecked")
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		
+
 /*		
 		Post post = new Post();
 		post.setTitle("Sppinrg...");
@@ -62,7 +67,7 @@ public class JpaRunner implements ApplicationRunner {
 		}
 		
 */		
-
+/*
 		JSONObject data = new JSONObject();
 		
 		data.put("name", "song");
@@ -73,6 +78,12 @@ public class JpaRunner implements ApplicationRunner {
 		rootJSon.put("data", data);
 		
 		System.out.println(rootJSon.toJSONString());
+*/
+		
+		Post post = new Post();
+		post.setTitle("Sppinrg...");
+		postRepository.save(post);
+		postRepository.findAll().forEach(System.out::println);
 		
 		
 	}
