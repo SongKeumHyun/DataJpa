@@ -86,6 +86,16 @@ public class JpaRunner implements ApplicationRunner {
 		postRepository.findAll().forEach(System.out::println);
 		
 		
+		List<Post> posts =  postRepository.FindMyPost();
+		
+		
+		for (Post p : posts) {
+			
+			System.out.println(p.toString());
+			
+		}
+		
+		
 	}
 	
 
