@@ -20,14 +20,18 @@ import org.json.simple.parser.ParseException;
 
 
 @Component
-@Transactional
+//@Transactional
 public class JpaRunner implements ApplicationRunner {
 
 //	@PersistenceContext
 //	EntityManager entityManager;
 	@Autowired
 	PostRepository postRepository;
+
+	@Autowired
+	jpaTest jpaTest;
 	
+
 	
 	@SuppressWarnings("unchecked")
 	@Override
@@ -80,20 +84,11 @@ public class JpaRunner implements ApplicationRunner {
 		System.out.println(rootJSon.toJSONString());
 */
 		
-		Post post = new Post();
-		post.setTitle("Sppinrg...");
-		postRepository.save(post);
-		postRepository.findAll().forEach(System.out::println);
 		
 		
-		List<Post> posts =  postRepository.FindMyPost();
 		
+		jpaTest.DoTest();
 		
-		for (Post p : posts) {
-			
-			System.out.println(p.toString());
-			
-		}
 		
 		
 	}
